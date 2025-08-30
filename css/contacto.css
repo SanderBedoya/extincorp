@@ -1,0 +1,204 @@
+/*========== SECCIÓN CONTACTO ==========*/
+/* Estilos específicos para la página de contacto */
+
+.contact-section {
+  padding: 6rem 2rem;
+  background-color: var(--color-background);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-section:nth-child(even) {
+  background-color: var(--color-surface);
+}
+
+.contact-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.contact-content,
+.form-content {
+  padding: 2rem;
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.contact-title {
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.contact-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background-color: var(--color-secondary);
+}
+
+.contact-intro {
+  color: var(--color-text-light);
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+}
+
+.contact-details {
+  list-style: none;
+  margin-bottom: 1.5rem;
+}
+
+.contact-details li {
+  padding: 0.75rem 0;
+  position: relative;
+  padding-left: 2.5rem;
+  color: var(--color-text);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.contact-icon {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  min-height: 18px;
+  fill: var(--color-secondary);
+  margin-top: 0.1rem;
+}
+
+.contact-details li::before {
+  display: none;
+}
+
+.contact-image,
+.form-image {
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.contact-image img,
+.form-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.contact-image img:hover,
+.form-image img:hover {
+  transform: scale(1.05);
+}
+
+/*========== FORMULARIO DE CONTACTO ==========*/
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label {
+  font-family: var(--font-secondary);
+  font-weight: 500;
+  color: var(--color-title);
+  font-size: 0.9rem;
+}
+
+.form-input {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 2px rgba(248, 154, 50, 0.2);
+}
+
+.form-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-button {
+  padding: 1rem 1.5rem;
+  background-color: var(--color-secondary);
+  color: var(--color-surface);
+  border: none;
+  border-radius: var(--border-radius);
+  font-family: var(--font-secondary);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: flex-start;
+}
+
+.form-button:hover {
+  background-color: var(--color-link-hover);
+}
+
+.form-message {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  min-height: 1.5rem;
+  color: var(--color-accent);
+}
+
+/*========== MAPA EMBEDIDO ==========*/
+.map-embed {
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: none;
+}
+
+/*========== RESPONSIVE ==========*/
+@media (min-width: 769px) {
+  .contact-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1025px) {
+  .contact-section {
+    padding: 8rem 4rem;
+  }
+  .contact-content,
+  .form-content {
+    padding: 3rem;
+  }
+}
+
+/*========== ANIMACIONES SUAVES ==========*/
+.contact-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.contact-section.loaded {
+  opacity: 1;
+  transform: translateY(0);
+}

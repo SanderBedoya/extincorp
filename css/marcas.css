@@ -1,0 +1,128 @@
+/*========== SECCIÓN MARCAS ==========*/
+/* Estilos específicos para la página de marcas */
+
+.brand-section {
+  padding: 6rem 2rem;
+  background-color: var(--color-background);
+  position: relative;
+  overflow: hidden;
+}
+
+.brand-section:nth-child(even) {
+  background-color: var(--color-surface);
+}
+
+.brand-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.brand-image {
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.brand-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.brand-image img:hover {
+  transform: scale(1.05);
+}
+
+.brand-content {
+  padding: 2rem;
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.brand-title {
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.brand-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background-color: var(--color-secondary);
+}
+
+.brand-intro {
+  color: var(--color-text-light);
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+}
+
+.brand-features {
+  list-style: none;
+  margin-bottom: 1.5rem;
+}
+
+.brand-features li {
+  padding: 0.5rem 0;
+  position: relative;
+  padding-left: 1.5rem;
+  color: var(--color-text);
+}
+
+.brand-features li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--color-secondary);
+  font-weight: bold;
+}
+
+.brand-note {
+  font-size: 0.95rem;
+  color: var(--color-accent);
+  font-style: italic;
+  padding: 1rem;
+  background-color: rgba(237, 40, 65, 0.1);
+  border-left: 4px solid var(--color-accent);
+  border-radius: var(--border-radius);
+}
+
+/*========== RESPONSIVE ==========*/
+@media (min-width: 769px) {
+  .brand-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1025px) {
+  .brand-section {
+    padding: 8rem 4rem;
+  }
+  .brand-content {
+    padding: 3rem;
+  }
+}
+
+/*========== ANIMACIONES SUAVES ==========*/
+.brand-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.brand-section.loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
