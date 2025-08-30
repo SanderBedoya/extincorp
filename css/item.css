@@ -1,0 +1,156 @@
+/* ========== SECCIÓN ITEM ========== */
+/* Diseño minimalista al estilo Tailwind */
+
+.item {
+  padding: 2rem 1rem;
+  background-color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item__contenedor {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.item__boton-superior,
+.item__boton-inferior {
+  align-self: flex-end;
+}
+
+.item__boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #3B82F6;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+  border: 1px solid #2563EB;
+}
+
+.item__boton:hover {
+  background-color: #2563EB;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.item__boton:active {
+  transform: translateY(0);
+}
+
+.item__boton-texto {
+  white-space: nowrap;
+}
+
+.item__imagen-contenedor {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item__imagen {
+  width: 1200px;
+  height: 1300px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.item__imagen:hover {
+  transform: scale(1.01);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1280px) {
+  .item__imagen {
+    width: 100%;
+    height: auto;
+    max-width: 1200px;
+    max-height: 1300px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .item {
+    padding: 1.5rem 1rem;
+  }
+  
+  .item__contenedor {
+    gap: 1.5rem;
+  }
+  
+  .item__boton {
+    padding: 0.5rem 0.875rem;
+    font-size: 0.8125rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .item {
+    padding: 1rem 0.5rem;
+  }
+  
+  .item__contenedor {
+    gap: 1rem;
+  }
+  
+  .item__boton-superior,
+  .item__boton-inferior {
+    align-self: center;
+  }
+  
+  .item__boton {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.75rem;
+  }
+  
+  .item__imagen {
+    border-radius: 0.375rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@media (max-width: 480px) {
+  .item {
+    padding: 0.5rem;
+  }
+  
+  .item__contenedor {
+    gap: 0.75rem;
+  }
+  
+  .item__boton {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.6875rem;
+  }
+  
+  .item__boton-texto {
+    font-size: 0.75rem;
+  }
+}
+
+/* Mejoras de accesibilidad */
+.item__boton:focus-visible {
+  outline: 2px solid #3B82F6;
+  outline-offset: 2px;
+}
+
+.item__imagen:focus-visible {
+  outline: 2px solid #3B82F6;
+  outline-offset: 4px;
+}

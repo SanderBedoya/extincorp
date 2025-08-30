@@ -1,0 +1,373 @@
+/* ========== SLIDER HERO ========== */
+/* 
+  Variables personalizables del slider
+  Cambiar aquí los colores, tiempos y dimensiones
+*/
+:root {
+  /* Colores del slider */
+  --slider-overlay: rgba(0, 0, 0, 0.4); /* Overlay sobre imagen */
+  --slider-text-color: #FFFFFF; /* Color del texto principal */
+  --slider-text-secondary: #E0E0E0; /* Texto secundario plomo claro */
+  --slider-button-bg: #FFD700; /* Amarillo patito para botón */
+  --slider-button-hover: #FFC400; /* Hover del botón más oscuro */
+  --slider-button-text: #000000; /* Texto negro para botón amarillo */
+  --slider-arrow-bg: rgba(255, 255, 255, 0.1); /* Fondo de flechas */
+  --slider-arrow-hover: rgba(255, 255, 255, 0.3); /* Hover flechas */
+  --slider-indicator: rgba(255, 255, 255, 0.5); /* Color indicadores */
+  --slider-indicator-active: #FFFFFF; /* Indicador activo */
+  
+  /* Tiempos de animación */
+  --slider-transition-duration: 0.6s; /* Duración transiciones */
+  --slider-auto-play-interval: 3s; /* Cambio automático cada 3s */
+  
+  /* Dimensiones */
+  --slider-content-width: 50%; /* Ancho del contenido en desktop */
+}
+
+/* Contenedor principal del slider */
+.hero-slider {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Cada slide individual */
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--slider-transition-duration) ease, 
+              visibility var(--slider-transition-duration) ease;
+}
+
+/* Slide activo */
+.slide.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Imagen de fondo SIN efectos */
+.slide__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* Overlay para imagen de fondo */
+.slide__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--slider-overlay);
+  z-index: 2;
+}
+
+/* Contenido del slide - MÁS OSCURO para mejor legibilidad */
+.slide__content {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 2rem;
+}
+
+/* Contenedor interno con fondo oscuro */
+.slide__inner {
+  width: var(--slider-content-width);
+  max-width: 1000px;
+  background: rgba(0, 0, 0, 0.584); /* Fondo oscuro para mejor contraste */
+  padding: 3rem;
+  border-radius: 12px;
+  text-align: center;
+}
+
+/* Estructura vertical: Título → Descripción → Botón */
+.slide__header {
+  display: block;
+  margin-bottom: 2rem;
+}
+
+/* Título - Blanco puro */
+.slide__title {
+  width: 100%;
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 1.5rem 0;
+  color: #FFFFFF; /* Blanco puro */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Descripción - Plomo claro */
+.slide__description {
+  width: 100%;
+  font-size: 1.3rem;
+  line-height: 1.7;
+  color: #E0E0E0; /* Plomo claro */
+  margin: 0 0 2.5rem 0;
+  font-weight: 300;
+}
+
+/* Contenedor del botón alineado a la derecha */
+.slide__button-container {
+  display: flex;
+  justify-content: flex-end; /* Alineación extrema a la derecha */
+  width: 100%;
+}
+
+/* Botón - Amarillo patito */
+.slide__button {
+  display: inline-flex;
+  align-items: center;
+  padding: 1.2rem 2.5rem;
+  background-color: var(--slider-button-bg); /* Amarillo patito */
+  color: var(--slider-button-text); /* Texto negro */
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.slide__button:hover {
+  background-color: var(--slider-button-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
+}
+
+/* Flechas de navegación */
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--slider-arrow-bg);
+  color: var(--slider-text-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 4;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider-arrow:hover {
+  background-color: var(--slider-arrow-hover);
+}
+
+.slider-arrow--prev {
+  left: 2rem;
+}
+
+.slider-arrow--next {
+  right: 2rem;
+}
+
+/* Indicadores de navegación */
+.slider-indicators {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.8rem;
+  z-index: 4;
+}
+
+.slider-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--slider-indicator);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  padding: 0;
+}
+
+.slider-indicator.active {
+  background-color: var(--slider-indicator-active);
+  transform: scale(1.2);
+}
+
+.slider-indicator:hover {
+  background-color: var(--slider-text-color);
+}
+
+/* Barra de progreso */
+.slider-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: rgba(255, 255, 255, 0.2);
+  z-index: 4;
+}
+
+.slider-progress__bar {
+  height: 100%;
+  background-color: var(--slider-indicator-active);
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+/* ========== RESPONSIVE ========== */
+/* Tablet */
+@media (max-width: 1024px) {
+  :root {
+    --slider-content-width: 70%;
+  }
+  
+  .slide__inner {
+    padding: 2.5rem;
+  }
+  
+  .slide__title {
+    font-size: 3rem;
+  }
+  
+  .slide__description {
+    font-size: 1.2rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  :root {
+    --slider-content-width: 85%;
+  }
+  
+  .slide__inner {
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.75); /* Un poco más oscuro en móvil */
+  }
+  
+  .slide__title {
+    font-size: 2.5rem;
+  }
+  
+  .slide__description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+  
+  .slide__button {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+  
+  .slider-arrow {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+  
+  .slider-arrow--prev {
+    left: 1rem;
+  }
+  
+  .slider-arrow--next {
+    right: 1rem;
+  }
+  
+  .slider-indicators {
+    bottom: 1.5rem;
+  }
+}
+
+/* Mobile pequeño */
+@media (max-width: 480px) {
+  :root {
+    --slider-content-width: 90%;
+  }
+  
+  .slide__content {
+    padding: 1rem;
+  }
+  
+  .slide__inner {
+    padding: 1.5rem;
+  }
+  
+  .slide__title {
+    font-size: 2rem;
+  }
+  
+  .slide__description {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .slide__button {
+    padding: 0.8rem 1.5rem;
+  }
+}
+
+/* Ajustes para mejor visualización en diferentes fondos */
+.slide__inner {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Mejora de accesibilidad */
+.slide__title:focus,
+.slide__button:focus {
+  outline: 2px solid var(--slider-button-bg);
+  outline-offset: 2px;
+}
+
+/* Estados de hover para mejor feedback */
+.slide__button:hover {
+  transform: translateY(-2px) scale(1.05);
+}
+
+.slider-arrow:focus,
+.slider-indicator:focus {
+  outline: 2px solid var(--slider-button-bg);
+  outline-offset: 2px;
+}
+
+/* Animación suave para transiciones */
+.slide__inner,
+.slide__button,
+.slider-arrow,
+.slider-indicator {
+  transition: all 0.3s ease;
+}
+
+/* Asegurar que el texto sea legible sobre cualquier fondo */
+.slide__title,
+.slide__description {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Contraste mejorado para el botón amarillo */
+.slide__button {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* Efecto de profundidad para el contenedor */
+.slide__inner {
+  backdrop-filter: blur(2px);
+}
