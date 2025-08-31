@@ -107,7 +107,15 @@
   flex-grow: 1;
 }
 
-/*========== RESPONSIVE ==========*/
+.brand-desc:hover {
+  color: var(--color-text-light);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+  flex-grow: 1;
+}
+
+/*========== RESPONSIVE marcas==========*/
 @media (min-width: 769px) {
   .brands-title {
     font-size: 3rem;
