@@ -19,7 +19,7 @@ const SLIDES_DATA = [
     title: "Bienvenidos",
     description: "Bienvenido a nuestra empresa líder en soluciones industriales. Con más de 20 años de experiencia, ofrecemos calidad y innovación en cada proyecto que emprendemos junto a nuestros clientes.",
     buttonText: "Comenzar",
-    buttonUrl: "default.html",
+    buttonUrl: "index.html",
     backgroundImage: "img/heroes/hero-bg-bienvenida.jpg" // Ruta de la imagen de fondo
   },
   {
