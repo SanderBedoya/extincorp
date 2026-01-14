@@ -1,7 +1,7 @@
 // CONFIGURACIÓN EDITABLE - CAMBIAR EN PRODUCCIÓN
 const CONFIG = {
   WHATSAPP: {
-    NUMBER: "+1234567890", // Número de WhatsApp (formato internacional)
+    NUMBER: "+59174323646", // Número de WhatsApp (formato internacional)
     DEFAULT_MSG: "Tengo algunas consultas" // Mensaje por defecto
   },
   ANALYTICS: {
